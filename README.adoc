@@ -1,5 +1,23 @@
 = Jaeger Opentracing microservices
+
 == Run local
+
+----
+
+# run jaeger all in one docker
+
+docker run -d -e \
+COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
+--name jaeger \
+-p 5775:5775/udp \
+-p 6831:6831/udp \
+-p 6832:6832/udp \
+-p 5778:5778 \
+-p 16686:16686 \
+-p 14268:14268 \
+-p 9411:9411 \
+jaegertracing/all-in-one:latest
+----
 
 ----
 cd microservices/stars
@@ -12,4 +30,14 @@ mvn spring-boot:run &
 cd $GOPATH/.../covers
 go get
 go run main.go &
+----
+
+== Test
+
+----
+# run no dependency resource
+curl 0:8081/books-no-dep
+
+# run stars & covers dependent resource
+curl 0:8081/books
 ----
