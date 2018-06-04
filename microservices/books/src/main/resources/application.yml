@@ -1,0 +1,5 @@
+stars.service.uri: "http://localhost:8080/stars/{bookId}"
+covers.service.uri: "http://localhost:8082/covers/{bookId}"
+spring.application.name: books
+server:
+  port: 8081

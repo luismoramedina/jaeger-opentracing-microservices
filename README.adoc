@@ -1,0 +1,15 @@
+= Jaeger Opentracing microservices
+== Run local
+
+----
+cd microservices/stars
+mvn spring-boot:run &
+
+cd ../books
+mvn spring-boot:run &
+
+# move it to your GOPATH dir
+cd $GOPATH/.../covers
+go get
+go run main.go &
+----
